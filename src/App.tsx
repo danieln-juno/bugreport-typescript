@@ -15,8 +15,9 @@ function App() {
     <div className="App" style={{ height: "100%" }}>
       <Routes>
         <Route path='/' element={<MainWindow />}/>
-        <Route path='settings/:id' element={<Settings />} />
-        <Route path='dashboard/:id' element={<Dashboard />} />
+        {/* <Route path='settings/:id' element={<Settings />} /> */}
+        <Route path='settings' element={<Settings />} />
+        <Route path='dashboard' element={<Dashboard />} />
         {/* for issue need to add it's id */}
         <Route path='issue' element={<Issue />} />
         <Route path='createissue' element={<CreateIssueTool />} />

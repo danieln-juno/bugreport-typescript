@@ -26,19 +26,19 @@ these are our capabilities once user clicked the extension
 function MainWindow({ }: Props) {
 
     return (
-        <Stack flexWrap="wrap" direction="column" sx={{ height: "100%", backgroundColor: "red", margin: "2rem" }}>
+        <Stack flexWrap="wrap" direction="column" sx={{ height: "100%", margin: "2rem" }}>
             <Typography sx={{ fontSize: "2rem", alignSelf: "center" }}>Issues reporting system</Typography>
             <List>
-                <ListItem component={Link} to='/createissue' >
+                <ListItem style={{width: "fit-content"}} component={Link} to='/createissue' >
                     <Typography>Create Issue Tool</Typography>
                 </ListItem>
-                <ListItem component={Link} to='/settings'>
+                <ListItem component={Link} style={{width: "fit-content"}} to='/settings'>
                     <Typography>Settings</Typography>
                 </ListItem>
-                <ListItem component={Link} to='/issues'>
+                <ListItem component={Link} style={{width: "fit-content"}} to='/issues'>
                     <Typography>Issues</Typography>
                 </ListItem>
-                <ListItem component={Link} to='/dashboard'>
+                <ListItem component={Link} style={{width: "fit-content"}} to='/dashboard'>
                     <Typography>Dashboards</Typography>
                 </ListItem>
             </List>
