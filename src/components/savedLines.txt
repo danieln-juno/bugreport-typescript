@@ -1,0 +1,15 @@
+-- for applying the issue --
+
+<Stack flexWrap="wrap" direction="column" sx={{height: "100%", backgroundColor: "red"}}>
+            <Typography sx={{ fontSize: "2rem", alignSelf: "center" }}>Issues reporting system</Typography>
+            <Form/>
+            
+
+            <Stack direction="row-reverse" spacing={2} sx={{ width: "100%", justifyContent: "center" }}>
+                <Button variant="contained" sx={{ width: "6rem" }}>Clear</Button>
+                <Button variant="contained" sx={{ width: "6rem" }}>Submit</Button>
+            </Stack>
+
+        </Stack>
+
+-----------
