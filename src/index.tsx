@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, createBrowserRouter } from 'react-router-dom';
+import MainWindow from './components/MainWindow';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+// const router = createBrowserRouter( [
+//   {
+//     path: "/",
+//     element: <MainWindow/>,
+    
+
+//   }
+// ])
+
 root.render(
   <BrowserRouter>
     <React.StrictMode>
