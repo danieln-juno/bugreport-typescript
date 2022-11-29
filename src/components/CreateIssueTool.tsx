@@ -14,16 +14,14 @@ type Props = {}
 function CreateIssueTool({ }: Props) {
 
   return (
-    <Stack sx={{width: "100%", height: "90vh"}}>
+    <Stack sx={{width: "100%", height: "90vh", alignItems: "center"}} spacing={2}>
       <h1 style={{ alignSelf: "center", letterSpacing: "0.2rem " }}>Create Issue Tool</h1>
-      <Stack direction="row" spacing={18}>
+      <Stack direction="row" spacing={4}>
         <Form />
         <Box style={{ backgroundColor: "gray", minHeight: "20rem", maxHeight: "20rem", maxWidth: "20rem" }}>
           HERE WE WILL HAVE A SCREENSHOT CAPTURE ?
         </Box>
       </Stack>
-      <Button style={{ width: "fit-content", alignSelf: "center", alignItems: "bottom" }}>cancel</Button>
-      <Button style={{ width: "fit-content", alignSelf: "center", alignItems: "bottom" }}>submit</Button>
     </Stack>
   )
 }
