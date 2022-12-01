@@ -5,15 +5,6 @@ import React from 'react'
 import { Outlet } from 'react-router-dom';
 import { Box } from '@material-ui/core';
 
-// type formValues = {
-//     company: string,
-//     severity: string,
-//     email: string,
-//     expected_behaviour: string,
-//     treating_squad: string,
-//     domain: string
-// }
-
 const Form = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   return (
@@ -22,10 +13,10 @@ const Form = () => {
         console.log(data)
       })}>
         <Stack direction="column" spacing={2} sx={{}}>
-          <TextField disabled={true} sx={{ width: "fit-content" }} defaultValue="cmpny" label="company's name" {...register("company_name")} />
-          <TextField sx={{ width: "fit-content" }} defaultValue="" label="contact's full name" {...register("contact_fullname")} />
-          <TextField sx={{ width: "fit-content" }} defaultValue="" label="contact's email" {...register("contact_email")} />
-          <TextField sx={{ width: "fit-content" }} defaultValue="" label="domain" {...register("domain")} />
+          <TextField required={true} sx={{ width: "fit-content" }} defaultValue="cmpny" label="company's name" {...register("company_name")} />
+          <TextField required={true} sx={{ width: "fit-content" }} defaultValue="" label="contact's full name" {...register("contact_fullname")} />
+          <TextField required={true} sx={{ width: "fit-content" }} defaultValue="" label="contact's email" {...register("contact_email")} />
+          <TextField required={true} sx={{ width: "fit-content" }} defaultValue="" label="domain" {...register("domain")} />
         </Stack>
 
         <Button style={{ width: "fit-content", alignSelf: "center", alignItems: "bottom", marginTop: "1rem" }}>Cancel</Button>

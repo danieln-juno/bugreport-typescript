@@ -23,22 +23,18 @@ these are our capabilities once user clicked the extension
 2. 
 
 */
-function MainWindow({ }: Props) {
+function Links({ }: Props) {
 
     return (
-        <Stack flexWrap="wrap" direction="column" sx={{ height: "100%", margin: "2rem" }}>
-            <Typography sx={{ fontSize: "2rem", alignSelf: "center" }}>Issues reporting system</Typography>
-            <List>
-                <ListItem style={{width: "fit-content"}} component={Link} to='/createissue' >
-                    <Typography>Create Issue Tool</Typography>
-                </ListItem>
-                <ListItem component={Link} style={{width: "fit-content"}} to='/settings'>
+        <Stack flexWrap="wrap" direction="row" sx={{ height: "100%", margin: "2rem" }}>
+            <List component={Stack} direction="row">                
+                <ListItem component={Link} style={{ width: "fit-content" }} to='/settings'>
                     <Typography>Settings</Typography>
                 </ListItem>
-                <ListItem component={Link} style={{width: "fit-content"}} to='/issues'>
+                <ListItem component={Link} style={{ width: "fit-content" }} to='/issues'>
                     <Typography>Issues</Typography>
                 </ListItem>
-                <ListItem component={Link} style={{width: "fit-content"}} to='/dashboard'>
+                <ListItem component={Link} style={{ width: "fit-content" }} to='/dashboard'>
                     <Typography>Dashboards</Typography>
                 </ListItem>
             </List>
@@ -47,4 +43,4 @@ function MainWindow({ }: Props) {
     )
 }
 
-export default MainWindow
+export default Links

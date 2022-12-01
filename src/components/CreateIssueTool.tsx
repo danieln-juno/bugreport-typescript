@@ -4,6 +4,7 @@ import { Box } from '@mui/system'
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Form from './Form'
+import Links from './Links'
 
 // we will need first to be able to take a screenshot,
 //then to be able to transfer thart screenshot to editor
@@ -22,6 +23,7 @@ function CreateIssueTool({ }: Props) {
           HERE WE WILL HAVE A SCREENSHOT CAPTURE ?
         </Box>
       </Stack>
+      <Links/>
     </Stack>
   )
 }
