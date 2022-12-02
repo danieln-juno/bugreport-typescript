@@ -15,11 +15,11 @@ function CreateIssueTool({ }: Props) {
       <Stack direction="row" spacing={4}>
         <Form />
         <Stack direction="column" spacing={4}>
-        <Box style={{ backgroundColor: "gray", minHeight: "20rem", maxHeight: "20rem", maxWidth: "20rem" }}>
-          HERE WE WILL HAVE A SCREENSHOT CAPTURE ?
-        </Box>
+          <Box style={{ backgroundColor: "gray", minHeight: "21rem", maxHeight: "20rem", maxWidth: "20rem" }}>
+            HERE WE WILL HAVE A SCREENSHOT CAPTURE ?
+          </Box>
       
-        <Button style={{ width: "fit-content", alignSelf: "center"}}>Take Screen Shot</Button>
+          <Button variant="contained" style={{ width: "fit-content", alignSelf: "center"}}>Take Screen Shot</Button>
         </Stack>
       </Stack>
       <Links/>
