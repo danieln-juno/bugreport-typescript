@@ -21,10 +21,13 @@ const Form = () => {
         <Stack direction="column" spacing={2} sx={{width: 300}}>
           <TextField  defaultValue="" label="Issue Title" {...register("issue_title")} />
           <TextField  multiline rows={10} defaultValue="" label="Description" {...register("description")} />
-        </Stack>
 
-        <Button style={{ width: "fit-content", alignSelf: "center", alignItems: "bottom", marginTop: "1rem" }}>Cancel</Button>
-        <Button type='submit' style={{ width: "fit-content", alignSelf: "center", alignItems: "bottom", marginTop: "1rem" }}>Submit</Button>
+          <Stack direction="row" spacing={4} sx ={{alignSelf: "center"}} >
+            <Button variant="contained" type='submit' style={{ width: "fit-content", alignSelf: "center", alignItems: "bottom", marginTop: "1rem" }}>Submit</Button>
+            <Button variant="contained" style={{ width: "fit-content", alignSelf: "center", alignItems: "bottom", marginTop: "1rem"}}>Cancel</Button>
+          </Stack>
+        </Stack>
+        
       </form>
 
     </Stack>
