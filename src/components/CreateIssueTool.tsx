@@ -10,7 +10,7 @@ type Props = {}
 function CreateIssueTool({ }: Props) {
 
   return (
-    <Stack sx={{width: "100%", height: "90vh", alignItems: "center"}} spacing={2}>
+    <Stack sx={{ width: "100%", height: "90vh", alignItems: "center" }} spacing={2}>
       <h1 style={{ alignSelf: "center", letterSpacing: "0.2rem " }}>Issue Report</h1>
       <Stack direction="row" spacing={4}>
         <Form />
@@ -18,11 +18,11 @@ function CreateIssueTool({ }: Props) {
           <Box style={{ backgroundColor: "gray", minHeight: "21rem", maxHeight: "20rem", maxWidth: "20rem" }}>
             HERE WE WILL HAVE A SCREENSHOT CAPTURE ?
           </Box>
-      
-          <Button variant="contained" style={{ width: "fit-content", alignSelf: "center"}}>Take Screen Shot</Button>
+
+          <Button variant="contained" style={{ width: "fit-content", alignSelf: "center" }}>Take Screen Shot</Button>
         </Stack>
       </Stack>
-      <Links/>
+      <Links />
     </Stack>
   )
 }
