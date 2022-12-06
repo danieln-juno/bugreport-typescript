@@ -4,13 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, createBrowserRouter } from 'react-router-dom';
+import { ChromeReaderMode } from '@mui/icons-material';
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+let message: HTMLElement;
 
-console.log("HI I HAVE BEEN LOADED FROM INDEX.TSX")
+chrome.runtime.onMessage.addListener(function (request, sender) {
+  if (request.action == "getSource") {
+    message.innerText = request.source;
+  }
+});
+
 
 root.render(
   <BrowserRouter>

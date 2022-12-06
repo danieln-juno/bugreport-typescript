@@ -1,68 +1,56 @@
 import { Button } from '@material-ui/core'
-import { ChromeReaderMode } from '@mui/icons-material'
 import { Stack } from '@mui/material'
 import { Box } from '@mui/system'
-import html2canvas from 'html2canvas'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Form from './Form'
 import Links from './Links'
-chrome.tabs.query({ "active": true, "currentWindow": true }, function (tabs) {
-  let tabURL = tabs[0].url;
-  console.log(tabs[0])
-  console.log("url = " + tabURL);
-})
-//we need to retrieve html of current open tab
-function capture() {
-  console.log("inside capture");
-  const captureElement = document.getElementById('root');
-  console.log(captureElement)
-  if (captureElement === null) {
+import CropImage from './CropImage'
 
-  }
-  else {
-    html2canvas(captureElement)
-      .then(canvas => {
-        canvas.style.display = 'none'
-        document.body.appendChild(canvas)
-        return canvas
-      })
-      .then(canvas => {
-        const image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
-        const a = document.createElement('a')
-        a.setAttribute('download', 'my-image.png')
-        a.setAttribute('href', image)
-        a.click()
-        canvas.remove()
-      })
-  }
-}
 
-// const btn = document.getElementById("takeScreenshot_btn");
 
-// if (btn === null) {
-//   console.log("empty btn")
-// }
-
-// else {
-//   btn.addEventListener('click', capture)
-// }
 type Props = {}
+
 function CreateIssueTool({ }: Props) {
+  const [imgSrc, setImgSrc] = useState("");
+  const [isCropping, isCroppingToggle] = useState(false);
+  const capture = (onSuccess: Function): void => {
+
+    chrome.tabs.query({ "active": true, "currentWindow": true }, async (tabs) => {
+      let tabURL = tabs[0].url;
+      console.log("tab info " + tabs[0])
+      console.log("url = " + tabURL);
+      isCroppingToggle(!isCropping); // we want to show only the image for cropping
+      const res = await chrome.tabs.captureVisibleTab();
+      onSuccess(res);
+
+
+    })
+  }
+  // const [crop, setCrop] = useState({ unit: '%', width: 100, aspect: 16 / 9 });
+  // const [image, setImage] = useState(null);
+  // const [output, setOutput] = useState(null);
+  // const imgRef = useRef(null);
 
   return (
     <Stack sx={{ width: "100%", height: "90vh", alignItems: "center" }} spacing={2}>
-      <h1 style={{ alignSelf: "center", letterSpacing: "0.2rem " }}>Issue Report</h1>
-      <Stack direction="row" spacing={4}>
-        <Form />
-        <Stack direction="column" spacing={4}>
-          <Box style={{ backgroundColor: "gray", minHeight: "21rem", maxHeight: "20rem", maxWidth: "20rem" }}>
-            HERE WE WILL HAVE A SCREENSHOT CAPTURE ?
-          </Box>
+      {isCropping ? <CropImage imgSrc={imgSrc} setImgSrc={setImgSrc} /> : <div>
+        <h1 style={{ alignSelf: "center", letterSpacing: "0.2rem " }}>Issue Report</h1>
+        <Stack direction="row" spacing={4}>
+          <Form />
+          <Stack direction="column" spacing={4}>
+            <Box id="box_screenshot" style={{ backgroundColor: "gray", minHeight: "21rem", maxHeight: "20rem", maxWidth: "20rem" }}>
+              {imgSrc ?
+                <CropImage imgSrc={imgSrc} setImgSrc={setImgSrc} />
+                : <></>}
+              {/* <img src={imgSrc} id="img_to_change"></img> */}
+            </Box>
 
-          <Button onClick={capture} id='takeScreenshot_btn' variant="contained" style={{ width: "fit-content", alignSelf: "center" }}>Take Screen Shot</Button>
+            <Button onClick={() => capture(setImgSrc)} id='takeScreenshot_btn' variant="contained" style={{ width: "fit-content", alignSelf: "center" }}>Take Screen Shot</Button>
+          </Stack>
         </Stack>
-      </Stack>
-      <Links />
+        <Links />
+      </div>}
+
     </Stack>
   )
 }

@@ -17,7 +17,13 @@
     "48": "juno-icon.png",
     "128": "juno-icon.png"
   },
-  "permissions": ["desktopCapture", "tabs", "downloads"],
+  "permissions": [
+    "desktopCapture",
+    "tabs",
+    "downloads",
+    "<all_urls>",
+    "activeTab"
+  ],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
