@@ -10,14 +10,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-// const router = createBrowserRouter( [
-//   {
-//     path: "/",
-//     element: <MainWindow/>,
-    
-
-//   }
-// ])
+console.log("HI I HAVE BEEN LOADED FROM INDEX.TSX")
 
 root.render(
   <BrowserRouter>
