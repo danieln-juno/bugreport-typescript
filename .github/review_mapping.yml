@@ -1,0 +1,7 @@
+files:
+  - name: a.js
+    reviews_required: 1
+  - name: b.js
+    reviews_required: 2
+  - name: c.js
+    reviews_required: 3
