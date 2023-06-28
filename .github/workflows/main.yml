@@ -1,0 +1,49 @@
+name: Pull Request Review
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Determine changed files
+        id: files
+        run: echo "::set-output name=files::$(git diff --name-only HEAD^)"
+
+      - name: Parse review mapping
+        id: parse
+        run: |
+          echo "::set-output name=mapping::$(cat review_mapping.yml)"
+
+      - name: Count required approving reviews
+        id: count
+        run: |
+          reviews=0
+          for file in ${{ steps.files.outputs.files }}; do
+            reviews=$((reviews + $(echo ${{ steps.parse.outputs.mapping }} | jq -r --arg file $file '.files[] | select(.name == $file) | .reviews_required')))
+          done
+          echo "::set-output name=reviews_required::$reviews"
+
+      - name: Set required approving reviews
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const reviewsRequired = ${{ steps.count.outputs.reviews_required }};
+            const context = github.context;
+            const prNumber = context.payload.pull_request.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            github.pulls.update({
+              owner,
+              repo,
+              pull_number: prNumber,
+              required_approving_review_count: reviewsRequired
+            });
